@@ -1,0 +1,199 @@
+$--primary-color: hsl(14, 45%, 36%);
+$--secondary-color: hsl(332, 51%, 32%);
+$--white-color: hsl(0, 0%, 100%);
+$--rose-white-color: hsl(330, 100%, 98%);
+$--eggshell-color: hsl(30, 54%, 90%);
+$--light-grey-color: hsl(30, 18%, 87%);
+$--wenge-brown-color: hsl(30, 10%, 34%);
+$--dark-charcoal-color: hsl(24, 5%, 18%);
+
+// FONTS
+$--primary-font: "Outfit", sans-serif;
+$--secondary-font: "Young Serif", serif;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background-color: $--eggshell-color;
+  font-family: $--primary-font;
+  color: $--wenge-brown-color;
+}
+
+ul,
+ol {
+  list-style: none;
+
+  li {
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 8px;
+    line-height: 1.5;
+
+    &::before {
+      position: absolute;
+      left: 8px;
+    }
+  }
+}
+
+ul li::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+ol {
+  counter-reset: item;
+
+  li::before {
+    content: counter(item) ".";
+    counter-increment: item;
+    font-weight: bold;
+    color: $--primary-color;
+  }
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: $--light-grey-color;
+}
+
+.card__title {
+  font-family: $--secondary-font;
+  font-size: 28px;
+  color: $--primary-color;
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+
+.main {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  max-width: 736px;
+  background-color: $--white-color;
+  padding: 40px;
+  margin: 123px auto;
+  border-radius: 24px;
+}
+
+.card__top {
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 40px;
+
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.card__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.card__bottom-title {
+  h1 {
+    font-family: $--secondary-font;
+    color: $--dark-charcoal-color;
+    font-size: 40px;
+    font-weight: 400;
+    margin-bottom: 24px;
+  }
+
+  p {
+    line-height: 1.5;
+  }
+}
+
+.card__preparation {
+  background-color: $--rose-white-color;
+  padding: 28px;
+  border-radius: 12px;
+
+  p {
+    font-size: 20px;
+    font-weight: 600;
+    color: $--secondary-color;
+    margin-bottom: 16px;
+  }
+
+  ul li::before {
+    background-color: $--secondary-color;
+  }
+}
+
+.card__ingredients {
+  ul li::before {
+    background-color: $--primary-color;
+  }
+}
+
+.card__nutrition {
+  .card__nutrition-desc {
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+
+  .card__table {
+    line-height: 1.5;
+    width: 100%;
+    tr {
+      display: flex;
+      padding: 12px 32px;
+      gap: 16px;
+      border-bottom: 1px solid $--light-grey-color;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      td {
+        flex: 1;
+
+        &:last-child {
+          font-weight: bold;
+          color: $--primary-color;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .card {
+    padding: 0;
+    margin: 0;
+
+    .card__top {
+      border-radius: 0;
+      height: 170px;
+    }
+
+    .card__bottom {
+      padding: 0 32px 40px 32px;
+
+      .card__bottom-title h1 {
+        font-size: 36px;
+        line-height: 1;
+      }
+    }
+  }
+}
